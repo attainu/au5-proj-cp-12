@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Files from "react-files";
 import Rodal from "rodal";
-import {storage} from '../firebase'
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import cogoToast from "cogo-toast";
+import firebase from "firebase";
+import storage from "../firebase/index";
 import { connect } from "react-redux";
 import { changeImage } from "../actions/settings";
 import { toggleProfilePictureModal } from "../actions/app";
@@ -15,6 +16,7 @@ class ProfilePictureModal extends Component {
 
     this.state = {
       file: null,
+      // url: null,
     };
 
     this.cropper = React.createRef();
@@ -31,7 +33,6 @@ class ProfilePictureModal extends Component {
   }
 
   onFileSelected(File) {
-    // console.log(File);
     this.setState(() => ({
       file: File[0],
     }));
@@ -50,7 +51,6 @@ class ProfilePictureModal extends Component {
   }
 
   render() {
-    console.log(this.state);
     const modalCustomStyles = {
       height: "fit-content",
       width: "fit-content",

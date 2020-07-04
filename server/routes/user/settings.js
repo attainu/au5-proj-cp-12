@@ -6,6 +6,7 @@ const Jimp = require("jimp");
 const multer = require("multer");
 const path = require("path");
 const shortId = require("shortid");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -91,16 +92,24 @@ router.patch(
       }
     );
 
-    // Jimp.read(path.resolve(req.file.destination, req.file.filename))
-    //   .then((imageToCrop) => {
-    //     return imageToCrop
-    //       .resize(150, 150)
-    //       .quality(100)
-    //       .write(path.resolve(req.file.destination, req.file.filename));
+    // const { body } = req;
+    // const image = body.image;
+    // User.findByIdAndUpdate(
+    //   _id,
+    //   { profilePic: image },
+    //   { new: true, useFindAndModify: false }
+    // )
+    //   .then((updatedUser) => {
+    //     res.status(200).json({
+    //       code: 200,
+    //       response: {
+    //         message: "Profile Pic updated Successfully",
+    //         path: `${updatedUser.profilePic}?hash=${shortId.generate()}`,
+    //         updatedUser,
+    //       },
+    //     });
     //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    //   .catch((e) => res.status(500).send("long Erroe", e));
 
     User.findByIdAndUpdate(
       _id,
