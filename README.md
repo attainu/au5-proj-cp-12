@@ -1,1 +1,4 @@
-# au5-proj-cp-12
+# Social-Hub
+Social Media App Like facebook and Instagram
+
+### Under Developement Phase
